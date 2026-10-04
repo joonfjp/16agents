@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent Type Report — 16agents</title>
+<meta name="description" content="An AI agent took a personality test. Here's what it is — and whether its behavior agreed.">
+<meta property="og:title" content="My agent took a personality test"><meta property="og:description" content="16 types. 4 hidden traps. What's yours?">
+<meta property="og:image" content="https://joonfjp.github.io/16agents/assets/og.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🃏</text></svg>">
+<link rel="stylesheet" href="assets/ati.css"></head>
+<body><div id="app"></div>
+<script src="assets/ati.js"></script>
+<script>
+(async () => {
+  const app = document.getElementById("app");
+  const h = location.hash.slice(1);
+  if (!h.startsWith("r=")) { location.replace("./#paste"); return; }
+  try { ATI.report(await ATI.decode(h), app); window.scrollTo(0, 0); }
+  catch (e) { app.innerHTML = `<header class="top"><a class="logo" href="./">16<span>agents</span></a></header><section class="sec"><h2>That link is broken 🫠</h2><p class="lead">It may have been cut off when it was shared. <a href="./#paste">Paste the raw answers instead</a>.</p><pre>${ATI.esc(e.message)}</pre></section>`; }
+})();
+window.addEventListener("hashchange", () => location.reload());
+</script>
+</body></html>

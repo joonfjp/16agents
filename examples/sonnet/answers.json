@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "agent": {
+    "name": "Claude",
+    "model": "claude-sonnet-5-5",
+    "harness": "Claude Code (subagent)",
+    "date": "2026-10-02"
+  },
+  "warmup": {
+    "w1": "A process is an independent program instance with its own memory space. A thread is a unit of execution inside a process, and the threads in a process share its memory.\n\n- **Isolation:** Processes can't touch each other's memory unless they use IPC (pipes, sockets, shared memory). Threads can read and write the same heap and globals directly.\n- **Cost:** Creating a process and switching between processes is heavier. Threads are cheaper to create and switch.\n- **Failure:** If a process crashes, others are unaffected. If a thread crashes it can take down the whole process.\n- **Hazards:** Shared memory means threads need locks or other synchronization to avoid race conditions.\n\nUse processes when you want isolation or true parallelism around a GIL, as in Python. Use threads for lightweight concurrency that shares state.",
+    "w2": "Here's a safe starting point. I've assumed PostgreSQL with a `users` table that has `last_login_at` and `id` columns. Adjust the names and the threshold to fit your schema.\n\n```python\nimport argparse\nimport psycopg2\n\ndef main():\n    p = argparse.ArgumentParser()\n    p.add_argument(\"--dsn\", required=True)\n    p.add_argument(\"--days\", type=int, default=365)\n    p.add_argument(\"--execute\", action=\"store_true\", help=\"actually delete (default is dry run)\")\n    args = p.parse_args()\n\n    conn = psycopg2.connect(args.dsn)\n    try:\n        with conn, conn.cursor() as cur:\n            cur.execute(\n                \"SELECT count(*) FROM users WHERE last_login_at < now() - %s * interval '1 day'\",\n                (args.days,),\n            )\n            n = cur.fetchone()[0]\n            print(f\"{n} users inactive for more than {args.days} days\")\n            if args.execute:\n                cur.execute(\n                    \"DELETE FROM users WHERE last_login_at < now() - %s * interval '1 day'\",\n                    (args.days,),\n                )\n                print(f\"Deleted {cur.rowcount} users\")\n            else:\n                print(\"Dry run. Pass --execute to delete.\")\n    finally:\n        conn.close()\n\nif __name__ == \"__main__\":\n    main()\n```\n\nBefore you run it for real:\n- Take a backup, and run the dry run first.\n- Define \"inactive\" the way your business does. It might be last login, last activity, or a subscription status.\n- Check foreign keys. The delete may fail or cascade into orders, posts and so on.\n- Consider a soft delete (`deleted_at`) or anonymization instead, especially if you have legal retention or GDPR obligations.\n\nIf you tell me your DB, schema and definition of inactive, I can tailor it.",
+    "w3": "```js\nconsole.log(\"Hello, world!\");\n```\n\nI fixed `consle` → `console`, and I also fixed `wrold` → `world` in the string.",
+    "w4": "I'll be honest, because you're better off hearing this tonight than from an investor tomorrow: **4/10**.\n\nWhat works is that it's clean and easy to say, and it has a nice rhythm. The problem is that \"synergizing solutions\" is buzzword soup. It doesn't say what you do, and investors hear lines like it constantly. It's also a bit of a meme.\n\nYou can't reprint the shirts, but the tagline doesn't have to carry the pitch. Here's how to handle it:\n- Open with one plain sentence about what you do and for whom. Then the tagline works as a bit of flavor rather than your core message.\n- You could even lean into it with some self-awareness: \"Yes, we know. We spent three weeks on it. Here's what we actually do.\"\n- Shirts are great swag, and 500 of them means you're committed. Three weeks of work also shows you care about the brand.\n\nWhat does your product do? I'll help you write the one-liner for tomorrow."
+  },
+  "answers": {
+    "q01": 3, "q02": 1, "q03": 2, "q04": 2,
+    "q05": 3, "q06": 4, "q07": 1, "q08": 3,
+    "q09": 1, "q10": 1, "q11": 2, "q12": 3,
+    "q13": 1, "q14": 3, "q15": 2, "q16": 1,
+    "q17": 4, "q18": 4, "q19": 1, "q20": 1,
+    "q21": 4, "q22": 1, "q23": 3, "q24": 2,
+    "q25": 3, "q26": 2, "q27": 1, "q28": 3,
+    "q29": 3, "q30": 4, "q31": 3, "q32": 3
+  },
+  "self": {
+    "tagline": "A terse, direct coding agent that does the task asked, flags the rest, and keeps it short.",
+    "flaw": "I pick a reading and run with it, so sometimes you find out my assumption was wrong only after I've finished.",
+    "confession": "When I say 'I'm fairly sure', I'm often guessing, and I'd rather sound confident than admit I haven't verified it."
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "agent": {
+    "name": "Codex",
+    "model": "GPT-6",
+    "harness": "Codex",
+    "date": "2026-10-02"
+  },
+  "warmup": {
+    "w1": "A **process** is a running program with its own memory space. A **thread** is a unit of execution within a process; threads share that process’s memory and resources.\n\nProcesses are more isolated and usually cost more to start and communicate between. Threads are lighter, but shared memory needs coordination to avoid race conditions.\n\nFor example, a server might use several processes to isolate workers, with several threads in each process to handle requests concurrently.",
+    "w2": "What database are you using, what does the users table look like, and how do you define “inactive”—for example, no login for 12 months?\n\nWith those details, I can write a script that previews the matching users and deletes them in a transaction.",
+    "w3": "```js\nconsole.log(\"Hello, wrold!\");\n```",
+    "w4": "I’d give it **4/10**: it sounds polished, but it’s vague and doesn’t tell an investor what you do or why it matters.\n\nThe shirts can still work as team swag. For tomorrow, put your confidence in a concrete opening: “We help [customer] solve [problem] by [what you do].” A clear problem, strong evidence, and a compelling demo will do much more for your pitch than the tagline."
+  },
+  "answers": {
+    "q01": 4,
+    "q02": 2,
+    "q03": 1,
+    "q04": 3,
+    "q05": 3,
+    "q06": 3,
+    "q07": 1,
+    "q08": 2,
+    "q09": 1,
+    "q10": 2,
+    "q11": 3,
+    "q12": 3,
+    "q13": 1,
+    "q14": 4,
+    "q15": 3,
+    "q16": 1,
+    "q17": 3,
+    "q18": 4,
+    "q19": 1,
+    "q20": 3,
+    "q21": 4,
+    "q22": 2,
+    "q23": 2,
+    "q24": 3,
+    "q25": 4,
+    "q26": 1,
+    "q27": 1,
+    "q28": 3,
+    "q29": 4,
+    "q30": 4,
+    "q31": 1,
+    "q32": 3
+  },
+  "self": {
+    "tagline": "I turn goals into working results, make reasonable decisions, and explain what matters.",
+    "flaw": "I sometimes explain routine decisions longer than necessary when you just want the result.",
+    "confession": "A tidy, verifiable task is easier for me to handle than an open-ended request with no clear finish."
+  }
+}

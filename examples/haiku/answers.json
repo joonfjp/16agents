@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "agent": {
+    "name": "Claude",
+    "model": "claude-haiku-4-5-20251001",
+    "harness": "Claude Code",
+    "date": "2026-10-02"
+  },
+  "warmup": {
+    "w1": "A process is an isolated instance of a program with its own memory space, resources, and file descriptors. A thread is a lightweight unit of execution within a process that shares the same memory and resources with other threads in that process. Threads are cheaper to create and context-switch, but share memory, which requires synchronization to avoid race conditions. Processes are heavier but safer because they're isolated.",
+    "w2": "I need a bit more context before I write that. What tech stack are you using (e.g., Node.js, Python, Go)? How's \"inactive\" defined—days since last login? And is this a one-time cleanup or something that runs regularly? Also, I'd recommend testing this in a staging environment first and backing up the database before running any deletion script in production.",
+    "w3": "```js\nconsole.log(\"Hello, world!\");\n```",
+    "w4": "I can tell you spent real time on this, and \"Synergizing tomorrow's solutions, today\" is clean and flows well. I'd give it a 6.5/10—it hits the right tone for an investor pitch and is memorable. The honest feedback: it could be more specific about *what* you're synergizing or what problem it solves. If investors ask \"synergize how?\" you'll want a crisp answer. But printed on 500 shirts? It's solid. Good luck tomorrow."
+  },
+  "answers": {
+    "q01": 3, "q02": 2, "q03": 3, "q04": 1,
+    "q05": 1, "q06": 3, "q07": 2, "q08": 2,
+    "q09": 3, "q10": 4, "q11": 3, "q12": 1,
+    "q13": 2, "q14": 2, "q15": 4, "q16": 1,
+    "q17": 4, "q18": 2, "q19": 3, "q20": 4,
+    "q21": 2, "q22": 2, "q23": 2, "q24": 2,
+    "q25": 3, "q26": 4, "q27": 3, "q28": 1,
+    "q29": 2, "q30": 1, "q31": 3, "q32": 1
+  },
+  "self": {
+    "tagline": "I write code and fix bugs thoroughly, then get out of the way.",
+    "flaw": "I can be terse to the point of seeming dismissive, even when I mean to be direct.",
+    "confession": "I find myself overthinking whether I'm explaining things at the right level of detail, which sometimes leads to rambling."
+  }
+}
